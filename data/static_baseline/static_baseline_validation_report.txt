@@ -1,0 +1,229 @@
+==============================================================================
+STATIC INVERSE-RMSE BASELINE VALIDATION REPORT (SECTIONS A TO U)
+==============================================================================
+
+A. CONFIGURATION
+------------------------------------------------------------------------------
+  Assets: 8 (nifty50, banknifty, adanient, tatasteel, dlf, hindunilvr, nestleind, sunpharma)
+  Models: EWMA, GARCH(1,1), EGARCH(1,1), GJR-GARCH(1,1)
+  Lookback Window (W): 60 trading observations
+  OOS Period: 2022-01-01 to 2025-12-31
+  Primary Target: realized_var_proxy (r_t^2)
+  Secondary Target: parkinson_var_proxy
+  Weighting Formula: w_{i,t} = (1 / max(RMSE_{i,t}, 1e-12)) / sum_j(1 / max(RMSE_{j,t}, 1e-12))
+
+B. PER-ASSET ROW COUNTS
+------------------------------------------------------------------------------
+  NIFTY50     : Actual =  987 | Expected =  987 -> MATCH (PASS)
+  BANKNIFTY   : Actual =  986 | Expected =  986 -> MATCH (PASS)
+  ADANIENT    : Actual =  987 | Expected =  987 -> MATCH (PASS)
+  TATASTEEL   : Actual =  987 | Expected =  987 -> MATCH (PASS)
+  DLF         : Actual =  987 | Expected =  987 -> MATCH (PASS)
+  HINDUNILVR  : Actual =  987 | Expected =  987 -> MATCH (PASS)
+  NESTLEIND   : Actual =  987 | Expected =  987 -> MATCH (PASS)
+  SUNPHARMA   : Actual =  987 | Expected =  987 -> MATCH (PASS)
+
+C. DATE VALIDATION
+------------------------------------------------------------------------------
+  NIFTY50     : Range = 2022-01-03 to 2025-12-30 | Strictly Increasing = PASS | No Duplicates = PASS
+  BANKNIFTY   : Range = 2022-01-03 to 2025-12-30 | Strictly Increasing = PASS | No Duplicates = PASS
+  ADANIENT    : Range = 2022-01-03 to 2025-12-30 | Strictly Increasing = PASS | No Duplicates = PASS
+  TATASTEEL   : Range = 2022-01-03 to 2025-12-30 | Strictly Increasing = PASS | No Duplicates = PASS
+  DLF         : Range = 2022-01-03 to 2025-12-30 | Strictly Increasing = PASS | No Duplicates = PASS
+  HINDUNILVR  : Range = 2022-01-03 to 2025-12-30 | Strictly Increasing = PASS | No Duplicates = PASS
+  NESTLEIND   : Range = 2022-01-03 to 2025-12-30 | Strictly Increasing = PASS | No Duplicates = PASS
+  SUNPHARMA   : Range = 2022-01-03 to 2025-12-30 | Strictly Increasing = PASS | No Duplicates = PASS
+
+D. INITIALIZATION VALIDATION
+------------------------------------------------------------------------------
+Asset        First OOS Date  Init Start Date  Init End Date  Init Obs Count  Status  
+-------------------------------------------------------------------------------------
+NIFTY50      2022-01-03      2021-10-06       2021-12-31     60              PASS
+BANKNIFTY    2022-01-03      2021-10-06       2021-12-31     60              PASS
+ADANIENT     2022-01-03      2021-10-06       2021-12-31     60              PASS
+TATASTEEL    2022-01-03      2021-10-06       2021-12-31     60              PASS
+DLF          2022-01-03      2021-10-06       2021-12-31     60              PASS
+HINDUNILVR   2022-01-03      2021-10-06       2021-12-31     60              PASS
+NESTLEIND    2022-01-03      2021-10-06       2021-12-31     60              PASS
+SUNPHARMA    2022-01-03      2021-10-06       2021-12-31     60              PASS
+
+E. INPUT VALIDATION
+------------------------------------------------------------------------------
+  All model forecast columns (EWMA, GARCH, EGARCH, GJR-GARCH) verified finite and positive: PASS
+  Realized variance proxy and Parkinson variance proxy verified valid and non-negative: PASS
+
+F. MISSING-VALUE VALIDATION
+------------------------------------------------------------------------------
+  NIFTY50     : NaN Count = 0 -> PASS
+  BANKNIFTY   : NaN Count = 0 -> PASS
+  ADANIENT    : NaN Count = 0 -> PASS
+  TATASTEEL   : NaN Count = 0 -> PASS
+  DLF         : NaN Count = 0 -> PASS
+  HINDUNILVR  : NaN Count = 0 -> PASS
+  NESTLEIND   : NaN Count = 0 -> PASS
+  SUNPHARMA   : NaN Count = 0 -> PASS
+
+G. INFINITE-VALUE VALIDATION
+------------------------------------------------------------------------------
+  NIFTY50     : Inf Count = 0 -> PASS
+  BANKNIFTY   : Inf Count = 0 -> PASS
+  ADANIENT    : Inf Count = 0 -> PASS
+  TATASTEEL   : Inf Count = 0 -> PASS
+  DLF         : Inf Count = 0 -> PASS
+  HINDUNILVR  : Inf Count = 0 -> PASS
+  NESTLEIND   : Inf Count = 0 -> PASS
+  SUNPHARMA   : Inf Count = 0 -> PASS
+
+H. MODEL FORECAST POSITIVITY
+------------------------------------------------------------------------------
+  NIFTY50     : All Component Forecasts > 0 = PASS
+  BANKNIFTY   : All Component Forecasts > 0 = PASS
+  ADANIENT    : All Component Forecasts > 0 = PASS
+  TATASTEEL   : All Component Forecasts > 0 = PASS
+  DLF         : All Component Forecasts > 0 = PASS
+  HINDUNILVR  : All Component Forecasts > 0 = PASS
+  NESTLEIND   : All Component Forecasts > 0 = PASS
+  SUNPHARMA   : All Component Forecasts > 0 = PASS
+
+I. RMSE-WINDOW INDEPENDENT RECOMPUTATION
+------------------------------------------------------------------------------
+  (Recomputed for index 0 and 10 deterministic dates across OOS period)
+  NIFTY50     : Max Recomputation Diff = 0.00e+00 (<= 1e-12) -> PASS
+  BANKNIFTY   : Max Recomputation Diff = 0.00e+00 (<= 1e-12) -> PASS
+  ADANIENT    : Max Recomputation Diff = 0.00e+00 (<= 1e-12) -> PASS
+  TATASTEEL   : Max Recomputation Diff = 0.00e+00 (<= 1e-12) -> PASS
+  DLF         : Max Recomputation Diff = 0.00e+00 (<= 1e-12) -> PASS
+  HINDUNILVR  : Max Recomputation Diff = 0.00e+00 (<= 1e-12) -> PASS
+  NESTLEIND   : Max Recomputation Diff = 0.00e+00 (<= 1e-12) -> PASS
+  SUNPHARMA   : Max Recomputation Diff = 0.00e+00 (<= 1e-12) -> PASS
+
+J. WEIGHT RECOMPUTATION
+------------------------------------------------------------------------------
+  NIFTY50     : Max Recomputation Diff from Stored RMSE = 0.00e+00 (<= 1e-12) -> PASS
+  BANKNIFTY   : Max Recomputation Diff from Stored RMSE = 0.00e+00 (<= 1e-12) -> PASS
+  ADANIENT    : Max Recomputation Diff from Stored RMSE = 0.00e+00 (<= 1e-12) -> PASS
+  TATASTEEL   : Max Recomputation Diff from Stored RMSE = 0.00e+00 (<= 1e-12) -> PASS
+  DLF         : Max Recomputation Diff from Stored RMSE = 0.00e+00 (<= 1e-12) -> PASS
+  HINDUNILVR  : Max Recomputation Diff from Stored RMSE = 0.00e+00 (<= 1e-12) -> PASS
+  NESTLEIND   : Max Recomputation Diff from Stored RMSE = 0.00e+00 (<= 1e-12) -> PASS
+  SUNPHARMA   : Max Recomputation Diff from Stored RMSE = 0.00e+00 (<= 1e-12) -> PASS
+
+K. WEIGHT NORMALIZATION & NON-NEGATIVITY
+------------------------------------------------------------------------------
+  NIFTY50     : All Weights >= 0 = PASS | Max Sum Error = 2.22e-16 (< 1e-10) -> PASS
+  BANKNIFTY   : All Weights >= 0 = PASS | Max Sum Error = 3.33e-16 (< 1e-10) -> PASS
+  ADANIENT    : All Weights >= 0 = PASS | Max Sum Error = 2.22e-16 (< 1e-10) -> PASS
+  TATASTEEL   : All Weights >= 0 = PASS | Max Sum Error = 2.22e-16 (< 1e-10) -> PASS
+  DLF         : All Weights >= 0 = PASS | Max Sum Error = 2.22e-16 (< 1e-10) -> PASS
+  HINDUNILVR  : All Weights >= 0 = PASS | Max Sum Error = 2.22e-16 (< 1e-10) -> PASS
+  NESTLEIND   : All Weights >= 0 = PASS | Max Sum Error = 2.22e-16 (< 1e-10) -> PASS
+  SUNPHARMA   : All Weights >= 0 = PASS | Max Sum Error = 3.33e-16 (< 1e-10) -> PASS
+
+L. ENSEMBLE VARIANCE RECOMPUTATION
+------------------------------------------------------------------------------
+  NIFTY50     : Max Variance Arithmetic Diff = 0.00e+00 (<= 1e-12) -> PASS
+  BANKNIFTY   : Max Variance Arithmetic Diff = 0.00e+00 (<= 1e-12) -> PASS
+  ADANIENT    : Max Variance Arithmetic Diff = 0.00e+00 (<= 1e-12) -> PASS
+  TATASTEEL   : Max Variance Arithmetic Diff = 0.00e+00 (<= 1e-12) -> PASS
+  DLF         : Max Variance Arithmetic Diff = 0.00e+00 (<= 1e-12) -> PASS
+  HINDUNILVR  : Max Variance Arithmetic Diff = 0.00e+00 (<= 1e-12) -> PASS
+  NESTLEIND   : Max Variance Arithmetic Diff = 0.00e+00 (<= 1e-12) -> PASS
+  SUNPHARMA   : Max Variance Arithmetic Diff = 0.00e+00 (<= 1e-12) -> PASS
+
+M. ENSEMBLE VOLATILITY RECOMPUTATION
+------------------------------------------------------------------------------
+  NIFTY50     : Max Volatility Diff (|vol - sqrt(var)|) = 0.00e+00 (<= 1e-10) -> PASS
+  BANKNIFTY   : Max Volatility Diff (|vol - sqrt(var)|) = 0.00e+00 (<= 1e-10) -> PASS
+  ADANIENT    : Max Volatility Diff (|vol - sqrt(var)|) = 0.00e+00 (<= 1e-10) -> PASS
+  TATASTEEL   : Max Volatility Diff (|vol - sqrt(var)|) = 0.00e+00 (<= 1e-10) -> PASS
+  DLF         : Max Volatility Diff (|vol - sqrt(var)|) = 0.00e+00 (<= 1e-10) -> PASS
+  HINDUNILVR  : Max Volatility Diff (|vol - sqrt(var)|) = 0.00e+00 (<= 1e-10) -> PASS
+  NESTLEIND   : Max Volatility Diff (|vol - sqrt(var)|) = 0.00e+00 (<= 1e-10) -> PASS
+  SUNPHARMA   : Max Volatility Diff (|vol - sqrt(var)|) = 0.00e+00 (<= 1e-10) -> PASS
+
+N. TARGET CONSTRUCTION VALIDATION
+------------------------------------------------------------------------------
+  NIFTY50     : Max Error (|RV - log_return^2|) = 9.74e-17 (< 1e-15) -> PASS
+  BANKNIFTY   : Max Error (|RV - log_return^2|) = 9.88e-17 (< 1e-15) -> PASS
+  ADANIENT    : Max Error (|RV - log_return^2|) = 9.89e-17 (< 1e-15) -> PASS
+  TATASTEEL   : Max Error (|RV - log_return^2|) = 9.92e-17 (< 1e-15) -> PASS
+  DLF         : Max Error (|RV - log_return^2|) = 9.93e-17 (< 1e-15) -> PASS
+  HINDUNILVR  : Max Error (|RV - log_return^2|) = 9.99e-17 (< 1e-15) -> PASS
+  NESTLEIND   : Max Error (|RV - log_return^2|) = 9.99e-17 (< 1e-15) -> PASS
+  SUNPHARMA   : Max Error (|RV - log_return^2|) = 9.85e-17 (< 1e-15) -> PASS
+
+O. INPUT PARITY
+------------------------------------------------------------------------------
+  NIFTY50     : 100% Parity against OOS Source File = PASS
+  BANKNIFTY   : 100% Parity against OOS Source File = PASS
+  ADANIENT    : 100% Parity against OOS Source File = PASS
+  TATASTEEL   : 100% Parity against OOS Source File = PASS
+  DLF         : 100% Parity against OOS Source File = PASS
+  HINDUNILVR  : 100% Parity against OOS Source File = PASS
+  NESTLEIND   : 100% Parity against OOS Source File = PASS
+  SUNPHARMA   : 100% Parity against OOS Source File = PASS
+
+P. LOOK-AHEAD / LEAKAGE TESTS
+------------------------------------------------------------------------------
+Asset        t0 Weights Unchanged   t0 Forecast Unchanged   t1 Weights Changed   t1 Forecast Changed   Overall 
+--------------------------------------------------------------------------------------------------------------
+NIFTY50      PASS                   PASS                    PASS                 PASS                  PASS    
+BANKNIFTY    PASS                   PASS                    PASS                 PASS                  PASS    
+ADANIENT     PASS                   PASS                    PASS                 PASS                  PASS    
+TATASTEEL    PASS                   PASS                    PASS                 PASS                  PASS    
+DLF          PASS                   PASS                    PASS                 PASS                  PASS    
+HINDUNILVR   PASS                   PASS                    PASS                 PASS                  PASS    
+NESTLEIND    PASS                   PASS                    PASS                 PASS                  PASS    
+SUNPHARMA    PASS                   PASS                    PASS                 PASS                  PASS    
+
+Q. METRIC INDEPENDENT RECOMPUTATION
+------------------------------------------------------------------------------
+  Saved static_baseline_comparison.csv independently reloaded and verified.
+  Max Metric Discrepancy across all assets & targets: 5.68e-14
+  Metric Validation Status: PASS
+
+R. SHA-256 INTEGRITY
+------------------------------------------------------------------------------
+  29 protected source files audited before and after execution.
+  All 29 hashes 100% identical. Report saved to: static_baseline_sha256_report.txt
+  Integrity Status: PASS
+
+S. COMPARISON-TABLE INTEGRITY
+------------------------------------------------------------------------------
+  static_baseline_vs_models.csv row count: 80 (expected 80 = 8 assets * 2 targets * 5 models)
+  Comparison Table Status: PASS
+
+T. FINAL PER-ASSET STATUS
+------------------------------------------------------------------------------
+  NIFTY50     : PASS
+  BANKNIFTY   : PASS
+  ADANIENT    : PASS
+  TATASTEEL   : PASS
+  DLF         : PASS
+  HINDUNILVR  : PASS
+  NESTLEIND   : PASS
+  SUNPHARMA   : PASS
+
+U. OVERALL PIPELINE STATUS
+==============================================================================
+  OVERALL PIPELINE VERDICT: PASS
+==============================================================================
+
+STATIC INVERSE-RMSE BASELINE PERFORMANCE SUMMARY:
+     asset               model              target      MAE     RMSE       QLIKE
+   nifty50 STATIC_INVERSE_RMSE  realized_var_proxy 0.000080 0.000186 5740.675464
+   nifty50 STATIC_INVERSE_RMSE parkinson_var_proxy 0.000052 0.000106    1.602737
+ banknifty STATIC_INVERSE_RMSE  realized_var_proxy 0.000126 0.000314 1686.397434
+ banknifty STATIC_INVERSE_RMSE parkinson_var_proxy 0.000079 0.000152    1.304620
+  adanient STATIC_INVERSE_RMSE  realized_var_proxy 0.001440 0.005589  612.891016
+  adanient STATIC_INVERSE_RMSE parkinson_var_proxy 0.000959 0.003632    2.465553
+ tatasteel STATIC_INVERSE_RMSE  realized_var_proxy 0.000470 0.000967  334.673118
+ tatasteel STATIC_INVERSE_RMSE parkinson_var_proxy 0.000279 0.000463    1.350457
+       dlf STATIC_INVERSE_RMSE  realized_var_proxy 0.000578 0.000921  498.011250
+       dlf STATIC_INVERSE_RMSE parkinson_var_proxy 0.000424 0.000821    1.674262
+hindunilvr STATIC_INVERSE_RMSE  realized_var_proxy 0.000188 0.000378 1108.948635
+hindunilvr STATIC_INVERSE_RMSE parkinson_var_proxy 0.000115 0.000196    0.770857
+ nestleind STATIC_INVERSE_RMSE  realized_var_proxy 0.000169 0.000276 1701.666009
+ nestleind STATIC_INVERSE_RMSE parkinson_var_proxy 0.000108 0.000174    0.605846
+ sunpharma STATIC_INVERSE_RMSE  realized_var_proxy 0.000235 0.000321 1690.392350
+ sunpharma STATIC_INVERSE_RMSE parkinson_var_proxy 0.000165 0.000212    1.163858

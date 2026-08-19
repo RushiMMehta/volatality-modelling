@@ -1,0 +1,40 @@
+============================================================
+STATIC BASELINE PROTECTED SOURCE FILE SHA-256 INTEGRITY REPORT
+============================================================
+
+Total Protected Files Audited: 29
+Protected File                                               Pre-Execution SHA-256                                            Status    
+--------------------------------------------------------------------------------------------------------------------------------------------
+data/adanient.csv                                            94820fb9528ef6c6f7e58ca483ee2df189ceff0d7f6440cbdeb6917d306d8ab5 MATCH (PASS)
+data/banknifty.csv                                           b094f570d64054f808574db8f02e3e29c0875327169128732fb5ef2e852de26e MATCH (PASS)
+data/dlf.csv                                                 8318eb4eed12f5cd4a9ad89507d4fa032b5c55eb0e877788bd3918f2da1277f2 MATCH (PASS)
+data/hindunilvr.csv                                          71bee3fed14848e7f46d23a792f136ffad64dd0c6d1b095ba477fc3e43863c81 MATCH (PASS)
+data/india_vix.csv                                           c40c93c1ebf6fa3bb3b35cd89a66d2adc1d1e0fa540d0031508cc265c61acb7c MATCH (PASS)
+data/nestleind.csv                                           5d4d5fe50093526f84335911c4a31bf3fce0d3a4da2b227a23af9021046a8619 MATCH (PASS)
+data/nifty50.csv                                             b868dae0884adec92cfdc39f9da0fa6b6cd4d27440a957e4acfc36108ffc9688 MATCH (PASS)
+data/oos_forecasts/adanient_oos_forecasts.csv                d8835a3fc7b2fb2ff732c68d9e14df41605a25d338d7fc6f386014baa29f8384 MATCH (PASS)
+data/oos_forecasts/banknifty_oos_forecasts.csv               bcdb09435e51a92cca477c3cee3bf020c0108f27f12fb20f724d7b621e61e8a8 MATCH (PASS)
+data/oos_forecasts/dlf_oos_forecasts.csv                     5d8c2e0692f18cf4eb8025508b4f23c58199e76e429a44eb2e48aadc78b9ac78 MATCH (PASS)
+data/oos_forecasts/hindunilvr_oos_forecasts.csv              91382b00647b2e180c57aa38c2b78d56d5b217afef7f809385d560cc20901749 MATCH (PASS)
+data/oos_forecasts/nestleind_oos_forecasts.csv               ffaa878329068ef6f56d543d1a2362534c9f0b91d4b647ec41be34e265c6ce71 MATCH (PASS)
+data/oos_forecasts/nifty50_oos_forecasts.csv                 61de853b5d01cf6f561050584f1ba820aea7d021624dc443c77a00a62521caee MATCH (PASS)
+data/oos_forecasts/oos_model_comparison.csv                  15444b16ee98f274f7bc1a170ce007bafab5e270a9afee5fb8ffec5dd318b0d5 MATCH (PASS)
+data/oos_forecasts/oos_model_ranking.csv                     34fffd874ea9768a9c0c4c8db8bd1091cdd834b983799777ad38c27e788850e4 MATCH (PASS)
+data/oos_forecasts/sunpharma_oos_forecasts.csv               8f5a0a12c7e4f37b90129054ce12fa3cf8ccf6b3a5829d8048e6877c432f1fb5 MATCH (PASS)
+data/oos_forecasts/tatasteel_oos_forecasts.csv               9f3141f8ad5978524d951049a6a33a9efd4e83559faeb9b99d86e2cba0e8bfa4 MATCH (PASS)
+data/pooled_dataset.csv                                      c7a75240c0d40718e91fbec9c36d78bf35616a45de3e5b6a1b4e78d575179747 MATCH (PASS)
+data/static_model_outputs/adanient_static_models.csv         3b34d51e77a20453dce33a3e7f980933371fdc9be3f86655039e557a1cbb3b86 MATCH (PASS)
+data/static_model_outputs/banknifty_static_models.csv        1b5a11d7ffdd0d06c59e44233f248441ef57fc6add911bb459ff1015c916598c MATCH (PASS)
+data/static_model_outputs/dlf_static_models.csv              b18ad2b68d7d5c94a608e366fe61264a0d0c036671d3b5e92bff0eaa2bafd259 MATCH (PASS)
+data/static_model_outputs/hindunilvr_static_models.csv       e9f3b31b532e3fe8a691321e2ffbba8d5fe8ac229473e3208041efbaa83963fb MATCH (PASS)
+data/static_model_outputs/model_parameters.csv               7f0248e11ec0d444950cbf99f577c2b8173da3a9e3450f9cc0f115f73c016853 MATCH (PASS)
+data/static_model_outputs/nestleind_static_models.csv        a6e33ab578c2b2f7b2cfa7d68545e85e1bc30a958ee38a61e6a909b05a56adc2 MATCH (PASS)
+data/static_model_outputs/nifty50_static_models.csv          789d7860cd0c31d263089b290b9a5a3d492b9ca62056eb0c6296011bb960f493 MATCH (PASS)
+data/static_model_outputs/sunpharma_static_models.csv        7c85633604b07e1860bdc88fbe803f36969f8cc866855c92b8a0b4b681db6b66 MATCH (PASS)
+data/static_model_outputs/tatasteel_static_models.csv        893572ad73844a93503dd46cba61271b674621cc1b69e28dc4c05f34a40b4942 MATCH (PASS)
+data/sunpharma.csv                                           c9b11decd83681931652cdd342d0012dbcf4cb12783a049863b25f5d2ea844f7 MATCH (PASS)
+data/tatasteel.csv                                           3c53eb8081156105ca0d7ba353f9c453dcdd612e9b15ad8d84d9e82c417e61a5 MATCH (PASS)
+
+============================================================
+OVERALL FILE INTEGRITY: PASS (100% UNCHANGED)
+============================================================
