@@ -1,0 +1,212 @@
+================================================================================
+NEURAL GATING FEATURE ENGINEERING COMPREHENSIVE VALIDATION REPORT
+================================================================================
+
+## A. CONFIGURATION
+--------------------------------------------------------------------------------
+Target Assets (8): nifty50, banknifty, adanient, tatasteel, dlf, hindunilvr, nestleind, sunpharma
+Total Feature Count: 9
+Feature Names: ewma_rmse_60, garch_rmse_60, egarch_rmse_60, gjr_garch_rmse_60, realized_vol_5, realized_vol_20, realized_vol_60, vol_of_vol_30, return_sign_lag1
+Out-Of-Sample Evaluation Period: 2022-01-01 to 2025-12-31
+Initialization Method: Pre-OOS static model 60-day warm-start + pre-OOS raw return lookbacks
+Zero-Lookahead Constraint: x_t = f(I_{t-1}) strictly enforced
+
+## B. SOURCE VALIDATION
+--------------------------------------------------------------------------------
+Input Directories Audited:
+  - data/*.csv (Raw return series)
+  - data/static_model_outputs/*.csv (Pre-OOS static models)
+  - data/oos_forecasts/*.csv (OOS 1-step forecasts)
+  - data/static_baseline/*.csv (Validated static baseline)
+Audit Findings:
+  - All expected files exist: YES
+  - Missing columns: NONE (0)
+  - Invalid / Non-chronological dates: NONE (0)
+  - Duplicate source dates: NONE (0)
+  - Non-finite returns / variances / forecasts: NONE (0)
+  - Realized variance proxy consistency (r_t^2): VERIFIED
+
+## C. DATE ALIGNMENT
+--------------------------------------------------------------------------------
+Asset        Baseline Rows  Feature Rows   First Date   Last Date    Missing/Unexpected  
+--------------------------------------------------------------------------------
+nifty50      987            987            2022-01-03   2025-12-30   0 (PERFECT MATCH)   
+banknifty    986            986            2022-01-03   2025-12-30   0 (PERFECT MATCH)   
+adanient     987            987            2022-01-03   2025-12-30   0 (PERFECT MATCH)   
+tatasteel    987            987            2022-01-03   2025-12-30   0 (PERFECT MATCH)   
+dlf          987            987            2022-01-03   2025-12-30   0 (PERFECT MATCH)   
+hindunilvr   987            987            2022-01-03   2025-12-30   0 (PERFECT MATCH)   
+nestleind    987            987            2022-01-03   2025-12-30   0 (PERFECT MATCH)   
+sunpharma    987            987            2022-01-03   2025-12-30   0 (PERFECT MATCH)   
+
+## D. INITIALIZATION AUDIT
+--------------------------------------------------------------------------------
+Asset        First OOS Date   Init Start Date  Init End Date    Warm-up Rows   Status    
+--------------------------------------------------------------------------------
+nifty50      2022-01-03       2021-10-06       2021-12-31       60             PASS      
+banknifty    2022-01-03       2021-10-06       2021-12-31       60             PASS      
+adanient     2022-01-03       2021-10-06       2021-12-31       60             PASS      
+tatasteel    2022-01-03       2021-10-06       2021-12-31       60             PASS      
+dlf          2022-01-03       2021-10-06       2021-12-31       60             PASS      
+hindunilvr   2022-01-03       2021-10-06       2021-12-31       60             PASS      
+nestleind    2022-01-03       2021-10-06       2021-12-31       60             PASS      
+sunpharma    2022-01-03       2021-10-06       2021-12-31       60             PASS      
+
+## E. FEATURE VALIDATION & SUMMARY STATISTICS
+--------------------------------------------------------------------------------
+### Asset: nifty50
+Feature              Valid   NaN   Inf   Min          Max          Mean         Std          Max Indep Diff 
+--------------------------------------------------------------------------------------------------------------
+ewma_rmse_60         987     0     0     2.4855e-05   5.2439e-04   1.4168e-04   1.2610e-04   0.00e+00       
+garch_rmse_60        987     0     0     3.1151e-05   5.1788e-04   1.4217e-04   1.2431e-04   0.00e+00       
+egarch_rmse_60       987     0     0     3.2158e-05   5.1727e-04   1.4181e-04   1.2250e-04   0.00e+00       
+gjr_garch_rmse_60    987     0     0     3.2663e-05   5.2865e-04   1.4214e-04   1.2563e-04   0.00e+00       
+realized_vol_5       987     0     0     1.3810e-03   3.5629e-02   7.5057e-03   4.1020e-03   0.00e+00       
+realized_vol_20      987     0     0     3.8175e-03   1.8661e-02   7.9931e-03   3.1364e-03   0.00e+00       
+realized_vol_60      987     0     0     4.6462e-03   1.4468e-02   8.3187e-03   2.5385e-03   0.00e+00       
+vol_of_vol_30        987     0     0     6.5572e-04   1.1327e-02   2.7906e-03   1.8833e-03   0.00e+00       
+return_sign_lag1     987     0     0     0.0000e+00   1.0000e+00   4.6707e-01   4.9917e-01   0.00e+00       
+
+### Asset: banknifty
+Feature              Valid   NaN   Inf   Min          Max          Mean         Std          Max Indep Diff 
+--------------------------------------------------------------------------------------------------------------
+ewma_rmse_60         986     0     0     3.3750e-05   9.3924e-04   2.2961e-04   2.2162e-04   0.00e+00       
+garch_rmse_60        986     0     0     4.5876e-05   9.3414e-04   2.3132e-04   2.1942e-04   0.00e+00       
+egarch_rmse_60       986     0     0     3.9762e-05   9.3083e-04   2.3048e-04   2.1861e-04   0.00e+00       
+gjr_garch_rmse_60    986     0     0     4.6039e-05   9.5059e-04   2.3252e-04   2.2241e-04   0.00e+00       
+realized_vol_5       986     0     0     1.9198e-03   4.5923e-02   8.9120e-03   5.2723e-03   0.00e+00       
+realized_vol_20      986     0     0     4.1171e-03   2.4740e-02   9.5731e-03   4.0996e-03   0.00e+00       
+realized_vol_60      986     0     0     5.0326e-03   1.8413e-02   1.0046e-02   3.2675e-03   0.00e+00       
+vol_of_vol_30        986     0     0     9.2637e-04   1.4304e-02   3.5529e-03   2.3676e-03   0.00e+00       
+return_sign_lag1     986     0     0     0.0000e+00   1.0000e+00   4.6146e-01   4.9877e-01   0.00e+00       
+
+### Asset: adanient
+Feature              Valid   NaN   Inf   Min          Max          Mean         Std          Max Indep Diff 
+--------------------------------------------------------------------------------------------------------------
+ewma_rmse_60         987     0     0     3.7994e-04   1.9957e-02   3.2981e-03   4.7540e-03   0.00e+00       
+garch_rmse_60        987     0     0     5.8739e-04   1.8954e-02   3.2628e-03   4.5329e-03   0.00e+00       
+egarch_rmse_60       987     0     0     5.6828e-04   1.9013e-02   3.2865e-03   4.5792e-03   0.00e+00       
+gjr_garch_rmse_60    987     0     0     5.9413e-04   1.9027e-02   3.2993e-03   4.5771e-03   0.00e+00       
+realized_vol_5       987     0     0     2.2525e-03   2.2407e-01   2.3086e-02   2.3063e-02   0.00e+00       
+realized_vol_20      987     0     0     8.1206e-03   1.3113e-01   2.6145e-02   1.9564e-02   0.00e+00       
+realized_vol_60      987     0     0     1.2812e-02   8.7267e-02   2.8556e-02   1.6060e-02   0.00e+00       
+vol_of_vol_30        987     0     0     2.3793e-03   7.5014e-02   1.3465e-02   1.2823e-02   0.00e+00       
+return_sign_lag1     987     0     0     0.0000e+00   1.0000e+00   4.8531e-01   5.0004e-01   0.00e+00       
+
+### Asset: tatasteel
+Feature              Valid   NaN   Inf   Min          Max          Mean         Std          Max Indep Diff 
+--------------------------------------------------------------------------------------------------------------
+ewma_rmse_60         987     0     0     1.5823e-04   2.6637e-03   7.7925e-04   5.9317e-04   0.00e+00       
+garch_rmse_60        987     0     0     2.4970e-04   2.6424e-03   7.8867e-04   5.7574e-04   0.00e+00       
+egarch_rmse_60       987     0     0     2.2245e-04   2.6336e-03   7.8222e-04   5.7621e-04   0.00e+00       
+gjr_garch_rmse_60    987     0     0     2.5483e-04   2.6623e-03   7.9027e-04   5.7637e-04   0.00e+00       
+realized_vol_5       987     0     0     2.0905e-03   7.4960e-02   1.6647e-02   9.6933e-03   0.00e+00       
+realized_vol_20      987     0     0     7.8419e-03   4.5081e-02   1.8009e-02   6.9534e-03   0.00e+00       
+realized_vol_60      987     0     0     1.0191e-02   3.3694e-02   1.8700e-02   5.4112e-03   0.00e+00       
+vol_of_vol_30        987     0     0     2.1757e-03   1.9547e-02   7.2907e-03   3.9406e-03   0.00e+00       
+return_sign_lag1     987     0     0     0.0000e+00   1.0000e+00   4.7518e-01   4.9964e-01   0.00e+00       
+
+### Asset: dlf
+Feature              Valid   NaN   Inf   Min          Max          Mean         Std          Max Indep Diff 
+--------------------------------------------------------------------------------------------------------------
+ewma_rmse_60         987     0     0     2.0816e-04   2.2995e-03   8.0197e-04   4.7183e-04   0.00e+00       
+garch_rmse_60        987     0     0     5.4645e-04   2.2272e-03   8.8770e-04   3.9599e-04   0.00e+00       
+egarch_rmse_60       987     0     0     5.0752e-04   2.2803e-03   8.7721e-04   4.0113e-04   0.00e+00       
+gjr_garch_rmse_60    987     0     0     5.4265e-04   2.2909e-03   8.7956e-04   4.0667e-04   0.00e+00       
+realized_vol_5       987     0     0     2.0290e-03   7.0361e-02   1.8125e-02   9.1806e-03   0.00e+00       
+realized_vol_20      987     0     0     8.3021e-03   4.3810e-02   1.9404e-02   6.3043e-03   0.00e+00       
+realized_vol_60      987     0     0     1.1962e-02   3.1714e-02   2.0146e-02   4.6243e-03   0.00e+00       
+vol_of_vol_30        987     0     0     2.4162e-03   2.1886e-02   7.1880e-03   3.2221e-03   0.00e+00       
+return_sign_lag1     987     0     0     0.0000e+00   1.0000e+00   4.7214e-01   4.9948e-01   0.00e+00       
+
+### Asset: hindunilvr
+Feature              Valid   NaN   Inf   Min          Max          Mean         Std          Max Indep Diff 
+--------------------------------------------------------------------------------------------------------------
+ewma_rmse_60         987     0     0     8.2292e-05   7.7825e-04   3.3326e-04   1.7223e-04   0.00e+00       
+garch_rmse_60        987     0     0     1.0871e-04   7.6899e-04   3.3242e-04   1.6842e-04   0.00e+00       
+egarch_rmse_60       987     0     0     1.0299e-04   7.6659e-04   3.3203e-04   1.6805e-04   0.00e+00       
+gjr_garch_rmse_60    987     0     0     1.1366e-04   7.7389e-04   3.3365e-04   1.6798e-04   0.00e+00       
+realized_vol_5       987     0     0     1.2742e-03   3.6836e-02   1.1298e-02   5.8427e-03   0.00e+00       
+realized_vol_20      987     0     0     5.2308e-03   2.3274e-02   1.2140e-02   3.7878e-03   0.00e+00       
+realized_vol_60      987     0     0     7.0822e-03   2.0024e-02   1.2403e-02   2.7210e-03   0.00e+00       
+vol_of_vol_30        987     0     0     1.7740e-03   1.1231e-02   4.7201e-03   1.9357e-03   0.00e+00       
+return_sign_lag1     987     0     0     0.0000e+00   1.0000e+00   5.1368e-01   5.0007e-01   0.00e+00       
+
+### Asset: nestleind
+Feature              Valid   NaN   Inf   Min          Max          Mean         Std          Max Indep Diff 
+--------------------------------------------------------------------------------------------------------------
+ewma_rmse_60         987     0     0     8.2885e-05   5.7412e-04   2.5788e-04   9.3840e-05   0.00e+00       
+garch_rmse_60        987     0     0     1.1135e-04   5.6712e-04   2.6070e-04   8.8850e-05   0.00e+00       
+egarch_rmse_60       987     0     0     1.0924e-04   5.6747e-04   2.6172e-04   8.8101e-05   0.00e+00       
+gjr_garch_rmse_60    987     0     0     1.1418e-04   5.6826e-04   2.6122e-04   8.8269e-05   0.00e+00       
+realized_vol_5       987     0     0     1.2388e-03   2.8180e-02   1.0810e-02   4.9256e-03   0.00e+00       
+realized_vol_20      987     0     0     4.8556e-03   2.0323e-02   1.1514e-02   2.9124e-03   0.00e+00       
+realized_vol_60      987     0     0     7.9773e-03   1.6080e-02   1.1771e-02   1.7224e-03   0.00e+00       
+vol_of_vol_30        987     0     0     1.3181e-03   8.1412e-03   4.2437e-03   1.5002e-03   0.00e+00       
+return_sign_lag1     987     0     0     0.0000e+00   1.0000e+00   4.8936e-01   5.0014e-01   0.00e+00       
+
+### Asset: sunpharma
+Feature              Valid   NaN   Inf   Min          Max          Mean         Std          Max Indep Diff 
+--------------------------------------------------------------------------------------------------------------
+ewma_rmse_60         987     0     0     7.8801e-05   6.4608e-04   2.7493e-04   1.2712e-04   0.00e+00       
+garch_rmse_60        987     0     0     2.3747e-04   6.5446e-04   3.3479e-04   9.4588e-05   0.00e+00       
+egarch_rmse_60       987     0     0     2.2898e-04   6.4448e-04   3.2931e-04   9.6699e-05   0.00e+00       
+gjr_garch_rmse_60    987     0     0     2.4144e-04   6.4419e-04   3.3486e-04   9.2953e-05   0.00e+00       
+realized_vol_5       987     0     0     1.7807e-03   3.1394e-02   1.1194e-02   5.1980e-03   0.00e+00       
+realized_vol_20      987     0     0     6.1516e-03   2.0112e-02   1.1926e-02   3.3029e-03   0.00e+00       
+realized_vol_60      987     0     0     8.0066e-03   1.7217e-02   1.2269e-02   2.4096e-03   0.00e+00       
+vol_of_vol_30        987     0     0     1.1652e-03   8.1704e-03   4.2842e-03   1.4630e-03   0.00e+00       
+return_sign_lag1     987     0     0     0.0000e+00   1.0000e+00   4.7619e-01   4.9969e-01   0.00e+00       
+
+## F. LEAKAGE & TEMPORAL CAUSALITY VALIDATION
+--------------------------------------------------------------------------------
+Causality Definition: x_t = f(I_{t-1}). No information at date t or future affects x_t.
+
+Asset        Test Date    Test 1 Diff (t)  Test 2 Diff (t+1)  Test 3 Diff (t+1)  Causality Status
+------------------------------------------------------------------------------------------------
+nifty50      2024-01-01   0.00e+00         0.0004             0.00e+00           PASS (ZERO LEAK)
+banknifty    2024-01-01   0.00e+00         0.0019             0.00e+00           PASS (ZERO LEAK)
+adanient     2024-01-01   0.00e+00         0.0902             0.00e+00           PASS (ZERO LEAK)
+tatasteel    2024-01-01   0.00e+00         0.0027             0.00e+00           PASS (ZERO LEAK)
+dlf          2024-01-01   0.00e+00         0.0118             0.00e+00           PASS (ZERO LEAK)
+hindunilvr   2024-01-01   0.00e+00         0.0093             0.00e+00           PASS (ZERO LEAK)
+nestleind    2024-01-01   0.00e+00         0.1143             0.00e+00           PASS (ZERO LEAK)
+sunpharma    2024-01-01   0.00e+00         0.0009             0.00e+00           PASS (ZERO LEAK)
+
+Per-Feature Permitted Information Cutoff:
+  - ewma_rmse_60         -> t-1 (CONFIRMED ZERO LOOKAHEAD)
+  - garch_rmse_60        -> t-1 (CONFIRMED ZERO LOOKAHEAD)
+  - egarch_rmse_60       -> t-1 (CONFIRMED ZERO LOOKAHEAD)
+  - gjr_garch_rmse_60    -> t-1 (CONFIRMED ZERO LOOKAHEAD)
+  - realized_vol_5       -> t-1 (CONFIRMED ZERO LOOKAHEAD)
+  - realized_vol_20      -> t-1 (CONFIRMED ZERO LOOKAHEAD)
+  - realized_vol_60      -> t-1 (CONFIRMED ZERO LOOKAHEAD)
+  - vol_of_vol_30        -> t-1 (CONFIRMED ZERO LOOKAHEAD)
+  - return_sign_lag1     -> t-1 (CONFIRMED ZERO LOOKAHEAD)
+
+## G. REPRODUCIBILITY AUDIT
+--------------------------------------------------------------------------------
+Run 1 vs Run 2 Maximum Absolute Numerical Difference: 0.00e+00
+Reproducibility Status: PASS (100% BIT-FOR-BIT IDENTICAL)
+
+## H. SHA-256 SOURCE INTEGRITY AUDIT
+--------------------------------------------------------------------------------
+Total Protected Files Hashed: 39
+Pre/Post Execution Hash Equality: MATCH (100% UNCHANGED)
+SHA-256 Audit Log Path: data/neural_gating/gating_feature_sha256_report.txt
+
+## I. PER-ASSET STATUS
+--------------------------------------------------------------------------------
+  - nifty50     : PASS
+  - banknifty   : PASS
+  - adanient    : PASS
+  - tatasteel   : PASS
+  - dlf         : PASS
+  - hindunilvr  : PASS
+  - nestleind   : PASS
+  - sunpharma   : PASS
+
+## J. OVERALL STATUS
+================================================================================
+OVERALL FEATURE ENGINEERING VERDICT: PASS
+================================================================================

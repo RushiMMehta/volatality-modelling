@@ -1,0 +1,9 @@
+ewma_rmse_60
+garch_rmse_60
+egarch_rmse_60
+gjr_garch_rmse_60
+realized_vol_5
+realized_vol_20
+realized_vol_60
+vol_of_vol_30
+return_sign_lag1

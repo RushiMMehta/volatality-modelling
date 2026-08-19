@@ -1,0 +1,118 @@
+================================================================================
+NEURAL GATING FEATURE MATRIX SPECIFICATION (SCHEMA v1.0)
+================================================================================
+Project: Adaptive Institutional Volatility Forecasting Engine
+Architecture Component: Neural Gating Network Feature Matrix (x_t in R^9)
+Target Dimension: k = 9 features per observation date t
+Zero-Lookahead Constraint: x_t = f(I_{t-1}). Strictly no information at date t or later.
+
+--------------------------------------------------------------------------------
+1. TRAILING MODEL-LOSS FEATURES (4 features)
+--------------------------------------------------------------------------------
+Feature: ewma_rmse_60
+Definition: Trailing 60-day root-mean-squared error of EWMA forecast variance vs realized variance proxy:
+            sqrt( (1/60) * sum_{tau=t-60}^{t-1} (ewma_variance_tau - realized_var_proxy_tau)^2 )
+Latest Permitted Information Date: t-1
+Source Dataset: data/static_model_outputs/{asset}_static_models.csv (pre-OOS init) + data/oos_forecasts/{asset}_oos_forecasts.csv
+Historical Window: Exactly 60 trading days [t-60, t-1]
+Units / Domain: [0, +inf), real-valued
+Lagged: Yes (starts at t-60, terminates at t-1)
+Initialization: Initialized with final 60 pre-OOS static model forecast variances and realized variances.
+
+Feature: garch_rmse_60
+Definition: Trailing 60-day root-mean-squared error of GARCH(1,1) forecast variance vs realized variance proxy:
+            sqrt( (1/60) * sum_{tau=t-60}^{t-1} (garch_variance_tau - realized_var_proxy_tau)^2 )
+Latest Permitted Information Date: t-1
+Source Dataset: data/static_model_outputs/{asset}_static_models.csv + data/oos_forecasts/{asset}_oos_forecasts.csv
+Historical Window: Exactly 60 trading days [t-60, t-1]
+Units / Domain: [0, +inf), real-valued
+Lagged: Yes (starts at t-60, terminates at t-1)
+Initialization: Initialized with final 60 pre-OOS static model forecast variances and realized variances.
+
+Feature: egarch_rmse_60
+Definition: Trailing 60-day root-mean-squared error of EGARCH(1,1) forecast variance vs realized variance proxy:
+            sqrt( (1/60) * sum_{tau=t-60}^{t-1} (egarch_variance_tau - realized_var_proxy_tau)^2 )
+Latest Permitted Information Date: t-1
+Source Dataset: data/static_model_outputs/{asset}_static_models.csv + data/oos_forecasts/{asset}_oos_forecasts.csv
+Historical Window: Exactly 60 trading days [t-60, t-1]
+Units / Domain: [0, +inf), real-valued
+Lagged: Yes (starts at t-60, terminates at t-1)
+Initialization: Initialized with final 60 pre-OOS static model forecast variances and realized variances.
+
+Feature: gjr_garch_rmse_60
+Definition: Trailing 60-day root-mean-squared error of GJR-GARCH(1,1) forecast variance vs realized variance proxy:
+            sqrt( (1/60) * sum_{tau=t-60}^{t-1} (gjr_garch_variance_tau - realized_var_proxy_tau)^2 )
+Latest Permitted Information Date: t-1
+Source Dataset: data/static_model_outputs/{asset}_static_models.csv + data/oos_forecasts/{asset}_oos_forecasts.csv
+Historical Window: Exactly 60 trading days [t-60, t-1]
+Units / Domain: [0, +inf), real-valued
+Lagged: Yes (starts at t-60, terminates at t-1)
+Initialization: Initialized with final 60 pre-OOS static model forecast variances and realized variances.
+
+--------------------------------------------------------------------------------
+2. REALIZED-VOLATILITY DYNAMICS (3 features)
+--------------------------------------------------------------------------------
+Feature: realized_vol_5
+Definition: 5-day realized volatility of log returns strictly ending at t-1:
+            sqrt( (1/5) * sum_{tau=t-5}^{t-1} r_tau^2 )
+Latest Permitted Information Date: t-1
+Source Dataset: data/{asset}.csv (log_return)
+Historical Window: 5 trading days [t-5, t-1]
+Units / Domain: [0, +inf), daily volatility (std dev units)
+Lagged: Yes (window ends at t-1)
+Initialization: Sourced from pre-OOS raw return history in data/{asset}.csv.
+
+Feature: realized_vol_20
+Definition: 20-day realized volatility of log returns strictly ending at t-1:
+            sqrt( (1/20) * sum_{tau=t-20}^{t-1} r_tau^2 )
+Latest Permitted Information Date: t-1
+Source Dataset: data/{asset}.csv (log_return)
+Historical Window: 20 trading days [t-20, t-1]
+Units / Domain: [0, +inf), daily volatility (std dev units)
+Lagged: Yes (window ends at t-1)
+Initialization: Sourced from pre-OOS raw return history in data/{asset}.csv.
+
+Feature: realized_vol_60
+Definition: 60-day realized volatility of log returns strictly ending at t-1:
+            sqrt( (1/60) * sum_{tau=t-60}^{t-1} r_tau^2 )
+Latest Permitted Information Date: t-1
+Source Dataset: data/{asset}.csv (log_return)
+Historical Window: 60 trading days [t-60, t-1]
+Units / Domain: [0, +inf), daily volatility (std dev units)
+Lagged: Yes (window ends at t-1)
+Initialization: Sourced from pre-OOS raw return history in data/{asset}.csv.
+
+--------------------------------------------------------------------------------
+3. VOLATILITY-OF-VOLATILITY (1 feature)
+--------------------------------------------------------------------------------
+Feature: vol_of_vol_30
+Definition: Sample standard deviation (ddof=1) across 30 trailing completed 5-day realized volatilities:
+            StdDev_{ddof=1}( RV_{5, t-30}, RV_{5, t-29}, ..., RV_{5, t-1} )
+            where RV_{5, tau} = sqrt( (1/5) * sum_{k=tau-4}^{tau} r_k^2 )
+Latest Permitted Information Date: t-1
+Source Dataset: data/{asset}.csv (log_return)
+Historical Window: 30 completed 5-day RVs (spans raw returns [t-34, t-1])
+Units / Domain: [0, +inf), sample standard deviation
+Lagged: Yes (latest completed RV is RV_{5, t-1})
+Initialization: Sourced from pre-OOS raw return history in data/{asset}.csv.
+
+--------------------------------------------------------------------------------
+4. MARKET / REGIME INDICATOR (1 feature)
+--------------------------------------------------------------------------------
+Feature: return_sign_lag1
+Definition: Binary downward price shock indicator at date t-1:
+            1 if log_return[t-1] < 0 else 0
+Latest Permitted Information Date: t-1
+Source Dataset: data/{asset}.csv (log_return)
+Historical Window: 1 trading day [t-1]
+Units / Domain: {0, 1}, discrete binary indicator
+Lagged: Yes (date t-1 return)
+Initialization: Sourced from pre-OOS raw return history in data/{asset}.csv.
+
+--------------------------------------------------------------------------------
+5. EXTERNAL DATA / INDIA VIX AUDIT
+--------------------------------------------------------------------------------
+Status: Preserved 9-feature core architecture without external live network dependencies.
+India VIX Data File: data/india_vix.csv exists locally in workspace.
+Policy: In strict compliance with Section 11 of the project blueprint, India VIX is documented
+as an optional market-implied series, and the authoritative 9-feature specification is preserved.

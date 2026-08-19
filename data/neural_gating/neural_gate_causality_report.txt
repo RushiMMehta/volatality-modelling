@@ -1,0 +1,4 @@
+Leakage Perturbation Test Results:
+TEST A: Perturbed realized_var_proxy[t] dramatically. Neural weights and forecast at t did not change. PASS
+TEST B: Perturbed t+1 observation. Features and weights at t remained unchanged. PASS
+Conclusion: MLP architecture is strictly stateless across time, confirming no future leakage.

@@ -1,0 +1,6 @@
+Best Epoch: 73
+Best Val QLIKE: 1.6015959978103638
+Train QLIKE at best epoch: 1.5364753007888794
+Train RMSE at best epoch: 0.00031747453613206744
+Val RMSE at best epoch: 0.0002597910352051258
+Zero-variance fallbacks: []

@@ -1,0 +1,17 @@
+1. Data integrity: PASS
+2. Split integrity: PASS
+3. Feature integrity: PASS
+4. Scaling integrity: PASS
+5. Training reproducibility: PASS
+6. Model architecture validation: PASS
+7. Softmax weight validation: PASS
+8. Ensemble arithmetic validation: PASS
+9. Leakage tests: PASS
+10. Test-set firewall validation: PASS
+11. Metric validation: PASS
+12. Static-baseline comparison: PASS
+13. Per-asset results: PASS
+14. Weight allocation statistics: PASS
+15. Crisis analysis status: 2020 crisis-period neural weight analysis cannot be performed from the current frozen OOS feature set.
+16. SHA-256 integrity: PASS
+17. Final PASS/FAIL: PASS

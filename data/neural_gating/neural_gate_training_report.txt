@@ -1,0 +1,13 @@
+Neural Gating Engine Training Report
+Architecture: 9-input -> 12-unit Dense (ReLU) -> 4-unit Dense (Softmax)
+Rationale for 12-unit: As directed by task, original 32-unit was too large for ~500 row dataset, 12-unit guards against overfitting.
+Features: 9 frozen features. Note: 'return_sign_lag1' was used instead of day-of-week/regime indicator per deliberate design choice for frozen feature set.
+Train Dates: 2022-01-03 to 2023-12-29
+Validation Dates: 2024-01-01 to 2024-12-31
+Test Dates: 2025-01-01 to 2025-12-30
+Scaler method: Z-score standardization on train only.
+Optimizer: Adam, lr=0.001. CPU-only determinism applied.
+Shuffling: Applied within-partition only. Safe for this stateless MLP architecture.
+Zero-variance fallbacks: Logged per-asset in training summaries.
+Model Paths: data/neural_gating/model/{asset}/
+No test set influence during training: Confirmed.
