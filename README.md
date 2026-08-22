@@ -69,7 +69,7 @@ The research design benchmarks candidate architectures across:
 
 The end-to-end forecasting pipeline operates through sequential, strictly causal stages:
 
-$$\text{Market Data} \longrightarrow \text{Return \& Proxy Engine} \longrightarrow \text{Base Models} \longrightarrow \text{Recursive Forecasts} \longrightarrow \begin{cases} \text{Inverse-RMSE Baseline} \\ \text{Neural Gating Engine} \end{cases} \longrightarrow \text{Statistical \& Economic Evaluation}$$
+$$\text{Market Data} \longrightarrow \text{Return \ Proxy Engine} \longrightarrow \text{Base Models} \longrightarrow \text{Recursive Forecasts} \longrightarrow \begin{cases} \text{Inverse-RMSE Baseline} \\ \text{Neural Gating Engine} \end{cases} \longrightarrow \text{Statistical \ Economic Evaluation}$$
 
 1. **Market Data Ingestion:** Daily OHLC records spanning 2015-01-01 through 2025-12-31 across 8 Indian assets.
 2. **Returns & Realized Proxies:** Computation of close-to-close log returns $r_t = \ln(P_t / P_{t-1})$, the standard squared return proxy $y_t = r_t^2$, and the Parkinson high-low range estimator.
